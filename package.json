@@ -1,0 +1,25 @@
+{
+  "name": "custom-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "@shopify/draggable": "^1.0.0-beta.8",
+    "grunt": "^1.0.4",
+    "grunt-browser-sync": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Vinicius França",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

@@ -1,0 +1,63 @@
+.container-area {
+    height: 720px;
+    display: grid;
+    grid-template-columns: repeat(6, 209px);
+    grid-template-rows: repeat(8, 90px);
+}
+
+.item {
+    background: #cecece;
+    border: dashed 1px #fff;
+    position: relative;
+}
+
+.item-1 {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 7;
+}
+
+.item-2 {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 8;
+    grid-column-end: 6;
+}
+
+.item-9 {
+    grid-row-start: 8;
+    grid-column-start: 1;
+    grid-row-end: 9;
+    grid-column-end: 7;
+}
+
+.toolbar .isDraggable {
+    background: green;
+    margin: 2px;
+
+}
+
+.item .isDraggable {
+    background: blue;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.held {
+    border: solid 10px black;
+    background-color: black;
+}
+
+.hovered {
+    border: dotted 5px black;
+}
+
+.invisible {
+    display: none;
+}
