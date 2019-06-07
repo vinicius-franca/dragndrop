@@ -1,47 +1,27 @@
-.container-area {
+.wrappers-container {
     height: 720px;
     display: grid;
-    grid-template-columns: repeat(6, 209px);
-    grid-template-rows: repeat(8, 90px);
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(8, auto);
+    grid-gap: 0.5rem;
 }
 
-.item {
+.wrapper {
     background: #cecece;
-    border: dashed 1px #fff;
     position: relative;
 }
-
-.item-1 {
-    grid-row-start: 1;
-    grid-column-start: 1;
-    grid-row-end: 2;
-    grid-column-end: 7;
+.element-draggable{
+    color:#fff;
+    font-weight: bold;
+    padding: 10px;
 }
-
-.item-2 {
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-row-end: 8;
-    grid-column-end: 6;
-}
-
-.item-9 {
-    grid-row-start: 8;
-    grid-column-start: 1;
-    grid-row-end: 9;
-    grid-column-end: 7;
-}
-
-.toolbar .isDraggable {
-    background: green;
+.toolbar .element-draggable {
+    background: #0dc497;
     margin: 2px;
-
 }
 
-.item .isDraggable {
-    background: blue;
-    height: 100%;
-    width: 100%;
+.wrapper .element-draggable {
+    background: #6ba5b4;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -50,14 +30,5 @@
 }
 
 .held {
-    border: solid 10px black;
-    background-color: black;
-}
-
-.hovered {
-    border: dotted 5px black;
-}
-
-.invisible {
-    display: none;
+    background-color: #ffc148;
 }
