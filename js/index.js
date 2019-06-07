@@ -25,7 +25,8 @@ class App {
           container.style.gridArea = gridPositions[item][0] + '/' + gridPositions[item][1] + '/' + gridPositions[item][2] + '/' + gridPositions[item][3];
         }
       }
-    }
+    }  
+
   }
   
   static dragstart(e) {
@@ -50,4 +51,18 @@ class App {
     }
   }
 }
-document.addEventListener("DOMContentLoaded", App.init)
+document.addEventListener("DOMContentLoaded", App.init);
+
+let json;
+
+function saveLayout(){    
+  let initElement = document.getElementById("layout-preview");
+  json = html2json(initElement.innerHTML);
+}
+
+function loadLayout(){
+  let element = document.getElementById("layout-preview");
+  let html = json2html(json);
+  element.innerHTML = html;
+  App.init();
+}

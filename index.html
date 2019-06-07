@@ -11,6 +11,8 @@
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script> -->
+    <script src="https://cdn.rawgit.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js"></script>
+    <script src="js/html2json.js"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -38,12 +40,14 @@
                     </div>
                 </div>
                 <div class="col-8">
+                    <button class="btn btn-primary btn-block my-2" onclick="saveLayout()">Save Layout</button>
+                    <button class="btn btn-secondary btn-block my-2" onclick="loadLayout()">Load Layout</button>
                     <div class="card">
                         <div class="card-header">
                             <strong>Layout Preview</strong>
                         </div>
                         <div class="card-body">
-                            <section class="wrappers-container">
+                            <section class="wrappers-container" id="layout-preview">
                                 <div class="wrapper" id="wrapper_1"></div>
                                 <div class="wrapper" id="wrapper_2"></div>
                                 <div class="wrapper" id="wrapper_3"></div>
