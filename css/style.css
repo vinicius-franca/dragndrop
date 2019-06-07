@@ -9,11 +9,13 @@
 .wrapper {
     background: #cecece;
     position: relative;
+    border-radius: .25rem;
 }
-.element-draggable{
+.element-draggable{ 
     color:#fff;
     font-weight: bold;
     padding: 10px;
+    cursor:move;
 }
 .toolbar .element-draggable {
     background: #0dc497;

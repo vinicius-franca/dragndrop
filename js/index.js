@@ -1,7 +1,4 @@
 class App {
-  /* cfunction (){
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  } */
   static init() {
     let gridPositions = {
       wrapper_1 : [1, 1, 2, 7],
@@ -14,14 +11,14 @@ class App {
     const boxes = document.getElementsByClassName('element-draggable');
     for (const box of boxes) {
       box.addEventListener("dragstart", App.dragstart);
-      box.addEventListener("dragend", App.dragend);
+      //box.addEventListener("dragend", App.dragend);
     }
 
     const containers = document.getElementsByClassName('wrapper');
     for (const container of containers) {
       container.addEventListener("dragover", App.dragover);
-      container.addEventListener("dragenter", App.dragenter);
-      container.addEventListener("dragleave", App.dragleave);
+      //container.addEventListener("dragenter", App.dragenter);
+      //container.addEventListener("dragleave", App.dragleave);
       container.addEventListener("drop", App.drop);
       for (const item of Object.keys(gridPositions)){
         if (item == container.id){
@@ -35,9 +32,9 @@ class App {
     e.dataTransfer.setData("text/html", e.target.id);
   }
 
-  static dragend(e) {
+  /* static dragend(e) {
     console.log(e);
-  }
+  } */
 
   static dragover(e) {
     e.preventDefault();
@@ -45,10 +42,12 @@ class App {
 
   static drop(e) {
     e.preventDefault();
-    var data = e.dataTransfer.getData("text/html");
-    var nodeCopy = document.getElementById(data).cloneNode(true);
-    nodeCopy.id = Math.random().toString(5).substring(2, 5); 
-    e.target.appendChild(nodeCopy);
+    if(!this.hasChildNodes()){
+      var data = e.dataTransfer.getData("text/html");
+      var nodeCopy = document.getElementById(data).cloneNode(true);
+      nodeCopy.id = Math.random().toString(5).substring(2, 5); 
+      e.target.appendChild(nodeCopy);
+    }
   }
 }
 document.addEventListener("DOMContentLoaded", App.init)
