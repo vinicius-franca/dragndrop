@@ -106,7 +106,7 @@
             parent.child.push(node);
           }
         },
-        comment: function(text) {
+       /*  comment: function(text) {
           debug(text);
           var node = {
             node: 'comment',
@@ -117,7 +117,7 @@
             parent.child = [];
           }
           parent.child.push(node);
-        },
+        }, */
       });
       return results;
     };

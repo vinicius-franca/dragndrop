@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Custom Monitor</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jquery.dsmorse-gridster.min.css">
+    <link rel="stylesheet" href="css/demo.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.js"></script> --><!-- Entire bundle -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/jquery.dsmorse-gridster.min.js"></script>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script> -->
     <script src="https://cdn.rawgit.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js"></script>
     <script src="js/html2json.js"></script>
@@ -38,24 +42,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-8">
                     <button class="btn btn-primary btn-block my-2" onclick="saveLayout()">Save Layout</button>
                     <button class="btn btn-secondary btn-block my-2" onclick="loadLayout()">Load Layout</button>
+                </div>
+                <div class="col-8">
                     <div class="card">
                         <div class="card-header">
                             <strong>Layout Preview</strong>
                         </div>
                         <div class="card-body">
                             <section class="wrappers-container" id="layout-preview">
-                                <div class="wrapper" id="wrapper_1"></div>
+                                <!-- <div class="wrapper" id="wrapper_1">
+                                </div>
                                 <div class="wrapper" id="wrapper_2"></div>
                                 <div class="wrapper" id="wrapper_3"></div>
                                 <div class="wrapper" id="wrapper_4"></div>
                                 <div class="wrapper" id="wrapper_5"></div>
                                 <div class="wrapper" id="wrapper_6"></div>
-                                <div class="wrapper" id="wrapper_7"></div>
-                                <div class="wrapper wrapper-9" id="wrapper_3"></div>
+                                <div class="wrapper" id="wrapper_7"></div> -->
+                                
+                                <div class="gridster">
+                                    <ul>
+                                        <!-- <li data-row="1" data-col="1" data-sizex="5" data-sizey="1"></li> -->
+                                        <li data-row="2" data-col="1" data-sizex="4" data-sizey="5"></li>
+                                        <li data-row="2" data-col="5" data-sizex="1" data-sizey="1"></li>
+                                        <li data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
+                                        <li data-row="4" data-col="5" data-sizex="1" data-sizey="1"></li>
+                                        <li data-row="5" data-col="5" data-sizex="1" data-sizey="1"></li>
+                                        <li data-row="6" data-col="5" data-sizex="1" data-sizey="1"></li>
+                                        <li data-row="8" data-col="1" data-sizex="5" data-sizey="1"></li>
+                                    </ul>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -63,5 +80,66 @@
             </div>
         </div>
     </main>
+    <script>
+    /* $(function(){ //DOM Ready
+        var gridster = $(".gridster ul").gridster({
+           // widget_margins: [5, 5],
+            widget_base_dimensions: [209, 90],
+            max_cols:6,
+            max_rows:8,
+            helper: 'clone',
+            resize: {
+                enabled: true,
+                max_size: [6, 8],
+                min_size: [1, 1]
+            },
+            shift_widgets_up: false,
+            shift_larger_widgets_down: false,
+            collision: {
+                wait_for_mouseup: false
+            }
+        });
+    }); */
+    
+    var gridster;
+
+    // same object than generated with gridster.serialize() method
+    var serialization = [
+        { col: 1, row: 1, size_x: 2, size_y: 2 },
+        { col: 3, row: 1, size_x: 1, size_y: 2 },
+        { col: 4, row: 1, size_x: 1, size_y: 1 },
+        { col: 2, row: 3, size_x: 3, size_y: 1 },
+        { col: 1, row: 4, size_x: 1, size_y: 1 },
+        { col: 1, row: 3, size_x: 1, size_y: 1 },
+        { col: 2, row: 4, size_x: 1, size_y: 1 },
+        { col: 2, row: 5, size_x: 1, size_y: 1 }
+    ];
+
+
+    // sort serialization
+    serialization = Gridster.sort_by_row_and_col_asc(serialization);
+
+    $(function () {
+
+        gridster = $(".gridster ul").gridster({            
+            widget_base_dimensions: [209, 90],
+            max_cols:6,
+            min_cols:6,
+            max_rows:8,
+            min_rows:8,
+            resize: {
+                enabled: true,
+                max_size: [6, 8],
+                min_size: [1, 1]
+            },
+            shift_widgets_up: false,
+            shift_larger_widgets_down: false,
+            collision: {
+                wait_for_mouseup: false
+            }
+        }).data('gridster');
+
+    });
+    </script>
 </body>
 </html>

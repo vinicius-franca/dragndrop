@@ -1,11 +1,11 @@
 .wrappers-container {
     height: 720px;
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(6, auto);
     grid-template-rows: repeat(8, auto);
-    grid-gap: 0.5rem;
+    grid-gap: 0.5rem; */
+    width: 100%;
 }
-
 .wrapper {
     background: #cecece;
     position: relative;
@@ -22,7 +22,7 @@
     margin: 2px;
 }
 
-.wrapper .element-draggable {
+.wrapper .element-draggable, .gs-w .element-draggable{
     background: #6ba5b4;
     position: absolute;
     top: 0;
@@ -30,7 +30,6 @@
     left: 0;
     right: 0;
 }
-
 .held {
     background-color: #ffc148;
 }
